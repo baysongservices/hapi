@@ -1,2 +1,2 @@
 # hapi
-hAPI is a Hypermedia API framework for creating dynamic polyglot restful services.
+hAPI is a hypermedia web API behavioral profile and framework for creating dynamic polyglot hypermedia restful services
