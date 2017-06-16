@@ -59,10 +59,52 @@ HTTP header fields are registered within the "Message Headers" registry maintain
 
 This document defines the following HTTP header fields, so the "Permanent Message Header Field Names" registry has been updated accordingly (see [BCP90]).
 
-+-------------------+----------+----------+---------------+
-| Header Field Name | Protocol | Status   | Reference     |
-+-------------------+----------+----------+---------------+
-| Connection        | http     | standard | Section 6.1   |
-| Connection        | http     | standard | Section 6.1   |
-| Connection        | http     | standard | Section 6.1   |
-+-------------------+----------+----------+---------------+
++-------------------+----------+--------------+---------------+
+| Header Field Name | Protocol | Status       | Reference     |
++-------------------+----------+--------------+---------------+
+| Goal              | http     | expirimental | Section 2.2   |
+| Hapi-profile      | http     | expirimental | Section 5.1   |
++-------------------+----------+--------------+---------------+
+
+6.2 Internet Media Type Registration
+
+IANA maintains the registry of Internet media types [BCP13] at <http://www.iana.org/assignments/media-types>.
+
+This document serves as the specification for the Internet media types "message/hapi-profile" and "application/hapi-profile".  The following has been registered with IANA.
+
+6.2.1 Internet Media Type message/hapi-profile
+
+DEFINE THE FORMAT OF HAPI-PROFILE
+
+6.2.2 Internet Media Type application/hapi-profile
+
+DEFINE THE FORMAT OF HAPI-PROFILE
+
+7 Security Considerations
+
+DEFINE SECURITY CONSIDERATIONS
+
+8 Acknowledgements
+
+DEFINE ACKNOWLEDGEMENTS
+
+9 References
+
+DEFINE REFERENCES - boil this down go back through all the links and videos
+
+NORMATIVE AND INFORMATIVE REFERENCES
+
+Appendicies
+
+Add any which need adding.
+
+Index
+
+Add index of terms.. use affordances, goals.. profiles.. etc.. etc..
+
+Authors' Addresses
+
+Michael Hibay
+Baysong Services
+Email: michael.hibay@baysong.com
+URI: https://blog.michaelhibay.com
