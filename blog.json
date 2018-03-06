@@ -340,7 +340,7 @@
           },
           {
             "id": "block",
-            "name": "block-post",
+            "name": "block-comment",
             "type": "unsafe",
             "link":{
               "rel":"https://baysong.com/hapi/blog#blockComment"
