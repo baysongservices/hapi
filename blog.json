@@ -1,0 +1,999 @@
+{
+  "alps": {
+    "version": "1.0",
+    "descriptor": [
+      {
+        "id": "Post",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog post is a resource which holds the textual contents and metadata references to the author, the post details, and links to Comments resources associated with the posting.",
+          "format":"text"
+        },
+        "descriptor": [
+          {
+            "id": "postContents",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "postFormat",
+            "type": "semantic",
+            "ext" : {
+              "id" : "post-format",
+              "href" : "https://baysong.com/hapi/blog/ext#post-format",
+              "value":["text", "markdown", "html", "asciidoc"]
+            },
+            "doc": {
+              "value": "The post format lists the format of this post contents to enable a consumer user agent to easily identify and display the contents."
+            }
+          },
+          {
+            "id": "postAuthor",
+            "type": "semantic",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#User"
+            },
+            "doc": {
+              "value": "The PostAuthor is the User Profile belonging to the person or entity who wrote the post."
+            }
+          },
+          {
+            "id": "postEditor",
+            "type": "semantic",
+            "doc": {
+              "value": "The PostEditor is the User Profile belonging to the person or entity who edited the post."
+            },
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#User"
+            }
+          },
+          {
+            "id": "postComments",
+            "type": "semantic",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#Comment"
+            },
+            "doc": {
+              "value": "The PostComments are the PostComment resource hierarchy related to this blog post."
+            }
+          },
+          {
+            "id": "add",
+            "name": "add-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#Post"
+            },
+            "doc": {
+              "value": "This is the create message affordance."
+            },
+            "rt": "https://baysong.com/hapi/blog#void"
+          },
+          {
+            "id": "get",
+            "name": "get-post",
+            "type": "safe",
+            "rt":"#Post",
+            "doc": {
+              "value": "This is the get message affordance."
+            }
+          },
+          {
+            "id": "change",
+            "name": "change-post",
+            "type": "idempotent",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#Post"
+            },
+            "doc": {
+              "value": "This is the update message affordance."
+            }
+          },
+          {
+            "id": "remove",
+            "name": "remove-post",
+            "type": "idempotent",
+            "doc": {
+              "value": "This is the delete message affordance."
+            }
+          },
+          {
+            "id": "shortlink",
+            "name": "shortlink-post",
+            "type": "safe",
+            "rt": "https://baysong.com/hapi/blog#shortlink",
+            "doc": {
+              "value": "Use this affordance to retrieve a shortlink to this resource with tracking data."
+            }
+          },
+          {
+            "id": "add-comment",
+            "name": "add-comment-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#Comment"
+            },
+            "rt": "https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This affordance will add a comment to a blog post."
+            }
+          },
+          {
+            "id": "publish",
+            "name": "publish-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#publishPost"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "unpublish",
+            "name": "unpublish-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#unpublishPost"
+            },
+            "doc": {
+              "value": "This affordance is used to unpublish a blog post."
+            }
+          },
+          {
+            "id": "disable-comments",
+            "name": "disable-comments-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#disableComments"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "enable-comments",
+            "name": "enable-comments-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#enableComments"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "pingback",
+            "name": "pingback-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#pingback"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          }
+        ]
+      },
+      {
+        "id": "Comment",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "commentAuthor",
+            "type": "semantic",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#User"
+            },
+            "doc": {
+              "value": "The CommentAuthor is the User Profile belonging to the person or entity who wrote the comment."
+            }
+          },
+          {
+            "id": "commentEditor",
+            "type": "semantic",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#User"
+            },
+            "doc": {
+              "value": "The CommentEditor is a or the User Profile belonging to the person or entity who edited the comment."
+            }
+          },
+          {
+            "id": "CommentText",
+            "name": "prop4",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "CommentTarget",
+            "name": "prop5",
+            "type": "semantic",
+            "ext" : {
+              "id" : "comment-target",
+              "href" : "https://baysong.com/hapi/blog/ext#comment-target",
+              "value":["blog-post", "blog-comment"]
+            },
+            "doc": {
+              "value": "This is prop 5"
+            }
+          },
+          {
+            "id": "CommentVisible",
+            "name": "prop4",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "CommentApproval",
+            "name": "prop4",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "CommentDeleted",
+            "name": "prop4",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "CommentRating",
+            "name": "prop4",
+            "type": "semantic",
+            "ext" : {
+              "id" : "comment-rating",
+              "href" : "https://baysong.com/hapi/blog/ext#comment-rating",
+              "value":["vote", "like", "reaction", "clap", "sticky", "pin"]
+            },
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "add",
+            "name": "blog-comment-add-comment",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#Comment"
+            },
+            "rt": "https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This affordance will add a comment to a blog post."
+            }
+          },
+          {
+            "id": "get",
+            "name": "get-comment",
+            "type": "safe",
+            "rt":"#Comment",
+            "doc": {
+              "value": "This is the get message affordance."
+            }
+          },
+          {
+            "id": "change",
+            "name": "change-comment",
+            "type": "idempotent",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#Comment"
+            },
+            "rt":"https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This is the delete message affordance."
+            }
+          },
+          {
+            "id": "remove",
+            "name": "remove-comment",
+            "type": "idempotent",
+            "rt":"https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This is the delete message affordance."
+            }
+          },
+          {
+            "id": "approve",
+            "name": "approve-comment",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#approveComment"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "mark-spam",
+            "name": "mark-spam-comment",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#markSpam"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "moderate",
+            "name": "moderate-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#moderateComment"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "block",
+            "name": "block-post",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#blockComment"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          }
+        ]
+      },
+      {
+        "id": "User",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog user is a resource which represents a user on the blog, this may be either an author or a viewer or reader."
+        },
+        "descriptor": [
+          {
+            "id": "userId",
+            "name":"userId-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "userName",
+            "name":"userName-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "firstName",
+            "name":"firstName-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "lastName",
+            "name":"lastName-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "location",
+            "name":"location-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "githubUrl",
+            "name":"githubUrl-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "facebookUrl",
+            "name":"facebookUrl-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "twitterHandle",
+            "name":"twitterHandle-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "lastSeen",
+            "name":"lastSeen-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "postCount",
+            "name":"postCount-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "userStatus",
+            "name":"userStatus-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "description",
+            "name":"description-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "biography",
+            "name":"biography-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "homepage",
+            "name":"homepage-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 4"
+            }
+          },
+          {
+            "id": "emailAddress",
+            "name": "emailAddress-user",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 5"
+            }
+          },
+          {
+            "id": "add",
+            "name": "add-user",
+            "type": "unsafe",
+            "rt":"https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This is the create message affordance."
+            }
+          },
+          {
+            "id": "get",
+            "name": "get-user",
+            "type": "safe",
+            "rt":"#User",
+            "doc": {
+              "value": "This is the get message affordance."
+            }
+          },
+          {
+            "id": "change",
+            "name": "change-user",
+            "type": "idempotent",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#User"
+            },
+            "rt":"https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This is the delete message affordance."
+            }
+          },
+          {
+            "id": "remove",
+            "name": "remove-user",
+            "type": "idempotent",
+            "rt":"https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This is the delete message affordance."
+            }
+          },
+          {
+            "id": "approve",
+            "name": "approve-user",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#approveUser"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "ban",
+            "name": "ban-user",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#banUser"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "soft-ban",
+            "name": "soft-ban-user",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#softBanUser"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "silence",
+            "name": "silence-user",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#silenceUser"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          },
+          {
+            "id": "unban",
+            "name": "unban-user",
+            "type": "unsafe",
+            "link":{
+              "rel":"https://baysong.com/hapi/blog#unbanUser"
+            },
+            "doc": {
+              "value": "This affordance is used to publish a blog post."
+            }
+          }
+        ]
+      },
+      {
+        "id": "PublishPost",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "unpublishPost",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "disableComments",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "enableComments",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "pingback",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "shortlink",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "approveComment",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "markSpam",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "moderate",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "blockComment",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "approveUser",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "banUser",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "softBanUser",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "silenceUser",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "unbanUser",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "add-delay",
+        "name": "add-delay-blog",
+        "type": "unsafe",
+        "link":{
+          "rel":"https://baysong.com/hapi/blog#addDelay"
+        },
+        "doc": {
+          "value": "This affordance is used to publish a blog post."
+        }
+      },
+      {
+        "id": "addDelay",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "descriptor": [
+          {
+            "id": "prop1",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 1"
+            }
+          },
+          {
+            "id": "prop2",
+            "type": "semantic",
+            "doc": {
+              "value": "This is prop 2"
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "void",
+        "type": "semantic",
+        "doc": {
+          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "format": "text"
+        },
+        "rt": "https://baysong.com/hapi/blog#void"
+      }
+    ]
+  }
+}
