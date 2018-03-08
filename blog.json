@@ -1182,6 +1182,7 @@
       },
       {
         "id": "flag-content",
+        "name": "flag-content-blog",
         "type": "unsafe",
         "link": {
           "rel": "https://baysong.com/hapi/blog#flagContent"
