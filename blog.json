@@ -7,23 +7,35 @@
         "type": "semantic",
         "doc": {
           "value": "A blog post is a resource which holds the textual contents and metadata references to the author, the post details, and links to Comments resources associated with the posting.",
-          "format":"text"
+          "format": "text"
         },
         "descriptor": [
+          {
+            "id": "id",
+            "type": "semantic",
+            "doc": {
+              "value": "The id field represents the globally unique identifier for this post resource."
+            }
+          },
           {
             "id": "postContents",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This value holds the contents for the post."
             }
           },
           {
             "id": "postFormat",
             "type": "semantic",
-            "ext" : {
-              "id" : "post-format",
-              "href" : "https://baysong.com/hapi/blog/ext#post-format",
-              "value":["text", "markdown", "html", "asciidoc"]
+            "ext": {
+              "id": "post-format",
+              "href": "https://baysong.com/hapi/blog#post-format",
+              "value": [
+                "text",
+                "markdown",
+                "html",
+                "asciidoc"
+              ]
             },
             "doc": {
               "value": "The post format lists the format of this post contents to enable a consumer user agent to easily identify and display the contents."
@@ -32,8 +44,8 @@
           {
             "id": "postAuthor",
             "type": "semantic",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#User"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#User"
             },
             "doc": {
               "value": "The PostAuthor is the User Profile belonging to the person or entity who wrote the post."
@@ -42,53 +54,92 @@
           {
             "id": "postEditor",
             "type": "semantic",
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#User"
+            },
             "doc": {
               "value": "The PostEditor is the User Profile belonging to the person or entity who edited the post."
-            },
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#User"
             }
           },
           {
             "id": "postComments",
             "type": "semantic",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#Comment"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Comment"
             },
             "doc": {
               "value": "The PostComments are the PostComment resource hierarchy related to this blog post."
             }
           },
           {
+            "id": "postPublishDate",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the publish date for the post."
+            }
+          },
+          {
+            "id": "postCreatedDate",
+            "type": "semantic",
+            "doc": {
+              "value": "The initial creation date for the post."
+            }
+          },
+          {
+            "id": "postLastUpdatedDate",
+            "type": "semantic",
+            "doc": {
+              "value": "The date of the last update to this post."
+            }
+          },
+          {
+            "id": "postViewCount",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the running count for views of this post by annoynymous or non-author viewers."
+            }
+          },
+          {
             "id": "add",
             "name": "add-post",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#Post"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Post"
             },
+            "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
-              "value": "This is the create message affordance."
-            },
-            "rt": "https://baysong.com/hapi/blog#void"
+              "value": "This is the create post affordance. Use this to create a new blog post."
+            }
           },
           {
             "id": "get",
             "name": "get-post",
             "type": "safe",
-            "rt":"#Post",
+            "rt": "#Post",
             "doc": {
-              "value": "This is the get message affordance."
+              "value": "This affordance will be used to retrieve a post resource."
             }
           },
           {
             "id": "change",
             "name": "change-post",
             "type": "idempotent",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#Post"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Post"
             },
             "doc": {
               "value": "This is the update message affordance."
+            }
+          },
+          {
+            "id": "replace",
+            "name": "replace-post",
+            "type": "idempotent",
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Post"
+            },
+            "doc": {
+              "value": "This is the replace post affordance. Use this if you want to completely replace the state of the existing resource with a new post.  This may have cascading effects outside the resource you are intending to replace, and may leave other resources in an inconsistent state. Use with caution."
             }
           },
           {
@@ -96,7 +147,7 @@
             "name": "remove-post",
             "type": "idempotent",
             "doc": {
-              "value": "This is the delete message affordance."
+              "value": "This is the delete post affordance, use this if you want to completely remove a resource from the system.  This may have cascading effects outside the resource you are intending to remove, and may leave other resources in an inconsistent state. Use with caution."
             }
           },
           {
@@ -112,20 +163,20 @@
             "id": "add-comment",
             "name": "add-comment-post",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#Comment"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Comment"
             },
             "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
-              "value": "This affordance will add a comment to a blog post."
+              "value": "This affordance will add a comment to a blog post. This convenience affordance should allow easier designs in consumer code, without requiring additional binding for limited gain."
             }
           },
           {
             "id": "publish",
             "name": "publish-post",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#publishPost"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#publishPost"
             },
             "doc": {
               "value": "This affordance is used to publish a blog post."
@@ -135,44 +186,44 @@
             "id": "unpublish",
             "name": "unpublish-post",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#unpublishPost"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#unpublishPost"
             },
             "doc": {
-              "value": "This affordance is used to unpublish a blog post."
+              "value": "This affordance is used to unpublish a blog post.  This won't have any affect on related resources such as comments, which will still be associated with this post.  All relationship state will be maintained if the post is unpublished."
             }
           },
           {
             "id": "disable-comments",
             "name": "disable-comments-post",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#disableComments"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#disableComments"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to disable comments on an individual post.  If the configuration of the service permits disabling comments on a post by post basis then authors, editors, moderators, and administrators may have the ability to disable comments on a post."
             }
           },
           {
             "id": "enable-comments",
             "name": "enable-comments-post",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#enableComments"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#enableComments"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to enableComments on a post which has been disabled.  If the configuration of the service permits disabling comments on a post by post basis then authors, editors, moderators, and administrators may have the ability to enable comments on a post."
             }
           },
           {
             "id": "pingback",
             "name": "pingback-post",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#pingback"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#pingback"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to retrieve the pingback information for a post.  This information can be used to configure other services or sites to send tracking information and recognition back to the primary service provider.  Please see the following wikipedia entry for more information: https://en.wikipedia.org/wiki/Pingback."
             }
           }
         ]
@@ -186,10 +237,17 @@
         },
         "descriptor": [
           {
+            "id": "id",
+            "type": "semantic",
+            "doc": {
+              "value": "The id field represents the globally unique identifier for this comment resource."
+            }
+          },
+          {
             "id": "commentAuthor",
             "type": "semantic",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#User"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#User"
             },
             "doc": {
               "value": "The CommentAuthor is the User Profile belonging to the person or entity who wrote the comment."
@@ -198,155 +256,171 @@
           {
             "id": "commentEditor",
             "type": "semantic",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#User"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#User"
             },
             "doc": {
               "value": "The CommentEditor is a or the User Profile belonging to the person or entity who edited the comment."
             }
           },
           {
-            "id": "CommentText",
-            "name": "prop4",
+            "id": "commentText",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This field holds the text value of the comment."
             }
           },
           {
-            "id": "CommentTarget",
-            "name": "prop5",
+            "id": "commentTarget",
             "type": "semantic",
-            "ext" : {
-              "id" : "comment-target",
-              "href" : "https://baysong.com/hapi/blog/ext#comment-target",
-              "value":["blog-post", "blog-comment"]
+            "ext": {
+              "id": "comment-target",
+              "href": "https://baysong.com/hapi/blog#comment-target",
+              "value": [
+                "blog-post",
+                "blog-comment"
+              ]
             },
             "doc": {
-              "value": "This is prop 5"
+              "value": "The comment target identifies the parent resource type to which this comment is responding."
             }
           },
           {
-            "id": "CommentVisible",
-            "name": "prop4",
+            "id": "commentVisible",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This value holds the state of this comments visibility to users of the system."
             }
           },
           {
-            "id": "CommentApproval",
-            "name": "prop4",
+            "id": "commentApproval",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This value holds the state of this comments approval display."
             }
           },
           {
-            "id": "CommentDeleted",
-            "name": "prop4",
+            "id": "commentDeleted",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This field holds the state of a deleted comment, when affirmatively set the comment is not being shown to users, but has not yet been removed from the system."
             }
           },
           {
-            "id": "CommentRating",
-            "name": "prop4",
+            "id": "commentRating",
             "type": "semantic",
-            "ext" : {
-              "id" : "comment-rating",
-              "href" : "https://baysong.com/hapi/blog/ext#comment-rating",
-              "value":["vote", "like", "reaction", "clap", "sticky", "pin"]
+            "ext": {
+              "id": "comment-rating",
+              "href": "https://baysong.com/hapi/blog/ext#comment-rating",
+              "value": [
+                "vote",
+                "like",
+                "reaction",
+                "clap",
+                "sticky",
+                "pin"
+              ]
             },
             "doc": {
-              "value": "This is prop 4"
+              "value": "The comment rating is the type of rating applied to this comment."
             }
           },
           {
             "id": "add",
-            "name": "blog-comment-add-comment",
+            "name": "add-comment",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#Comment"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Comment"
             },
             "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
-              "value": "This affordance will add a comment to a blog post."
+              "value": "This affordance will add a comment resource."
             }
           },
           {
             "id": "get",
             "name": "get-comment",
             "type": "safe",
-            "rt":"#Comment",
+            "rt": "#Comment",
             "doc": {
-              "value": "This is the get message affordance."
+              "value": "This affordance will be used to retrieve a comment resource."
             }
           },
           {
             "id": "change",
             "name": "change-comment",
             "type": "idempotent",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#Comment"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Comment"
             },
-            "rt":"https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
-              "value": "This is the delete message affordance."
+              "value": "This is the change comment affordance. This will update the current resource, with the changed fields."
+            }
+          },
+          {
+            "id": "replace",
+            "name": "replace-comment",
+            "type": "idempotent",
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#Comment"
+            },
+            "rt": "https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This is the replace comment affordance.  Care should be taken as this will replace the comment completely, which could leave other resources in an inconsistent state."
             }
           },
           {
             "id": "remove",
             "name": "remove-comment",
             "type": "idempotent",
-            "rt":"https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
-              "value": "This is the delete message affordance."
+              "value": "This is the remove comment affordance, use this to remove a comment completely."
             }
           },
           {
             "id": "approve",
             "name": "approve-comment",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#approveComment"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#approveComment"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to approve a comment which has been flagged as a violation of the rules for participation."
             }
           },
           {
             "id": "mark-spam",
             "name": "mark-spam-comment",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#markSpam"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#markSpam"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This is the affordance used to mark a post as spam.  This is a special case of scenario similar to flag-content, which is streamlined for easier single interaction user experiences."
             }
           },
           {
             "id": "moderate",
-            "name": "moderate-post",
+            "name": "moderate-comment",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#moderateComment"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#moderateComment"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to moderate a comment.  There are other less verbose affordances available to be used like mark-spam, flat-content, and block-comment.  This can be used when the requirements for your moderation do not fit one of the other usage scenarios."
             }
           },
           {
             "id": "block",
             "name": "block-comment",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#blockComment"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#blockComment"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to block content which has been flagged as violations against the rules for participation."
             }
           }
         ]
@@ -359,130 +433,122 @@
         },
         "descriptor": [
           {
-            "id": "userId",
-            "name":"userId-user",
+            "id": "id",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "The id field represents the globally unique identifier for this user resource."
             }
           },
           {
             "id": "userName",
-            "name":"userName-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This is the publicly viewable user id for the user."
             }
           },
           {
-            "id": "firstName",
-            "name":"firstName-user",
+            "id": "givenName",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This is the given name for the user.  Colloquially this is the same as first name in many western cultures, but given name is a more universally correct and understood term."
             }
           },
           {
-            "id": "lastName",
-            "name":"lastName-user",
+            "id": "familyName",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This is the family name for the user.  Colloquially this is the same as last name in many western cultures, but family name is a more universally correct and understood term."
             }
           },
           {
             "id": "location",
-            "name":"location-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This is the location property which describes where the user is.  This field can be geographic or some other system.  No semantics are implied in the use of this vocabulary, protocol bindings should further develop the requirements, semantics, and validation of the values held in this field."
             }
           },
           {
             "id": "githubUrl",
-            "name":"githubUrl-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "The publicly viewable URL for the user's github profile."
             }
           },
           {
             "id": "facebookUrl",
-            "name":"facebookUrl-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "The publicly viewable URL for the user's facebook profile."
             }
           },
           {
             "id": "twitterHandle",
-            "name":"twitterHandle-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "The publicly viewable URL for the user's twitter profile."
             }
           },
           {
             "id": "lastSeen",
-            "name":"lastSeen-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This field holds a value for the last time this user was seen on this service.  This may be related to the last login datetime, the last interaction the user had with the service, or some other measure."
             }
           },
           {
             "id": "postCount",
-            "name":"postCount-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This is a running count of the number of posts a user has created. This may or may not include unpublished, deleted, hidden, or blocked posts."
+            }
+          },
+          {
+            "id": "commentCount",
+            "type": "semantic",
+            "doc": {
+              "value": "This is a running count of the number of comments a user has created. This may or may not include deleted, hidden, or blocked comments."
             }
           },
           {
             "id": "userStatus",
-            "name":"userStatus-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This status field is used to convey the reputation and status within the system.  These values may impact the users ability to view, interact, or create resources within the system."
             }
           },
           {
             "id": "description",
-            "name":"description-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "The description is a short user supplied description of their profile."
             }
           },
           {
             "id": "biography",
-            "name":"biography-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "The biography is a longer, more free form user supplied description of their profile.  Different implementations may impose different restrictions on this field, but it should be generally more capable and verbose than Description."
             }
           },
           {
             "id": "homepage",
-            "name":"homepage-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 4"
+              "value": "This is the private homepage or blog URL of the user."
             }
           },
           {
             "id": "emailAddress",
-            "name": "emailAddress-user",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 5"
+              "value": "This is the users registered email address.  This may be used in some situations as the userName, or in lieu of the userName.  The email address must be verified before the user is able to begin user the service."
             }
           },
           {
             "id": "add",
             "name": "add-user",
             "type": "unsafe",
-            "rt":"https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
               "value": "This is the create message affordance."
             }
@@ -491,109 +557,145 @@
             "id": "get",
             "name": "get-user",
             "type": "safe",
-            "rt":"#User",
+            "rt": "#User",
             "doc": {
-              "value": "This is the get message affordance."
+              "value": "This is the get user affordance."
             }
           },
           {
             "id": "change",
             "name": "change-user",
             "type": "idempotent",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#User"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#User"
             },
-            "rt":"https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
-              "value": "This is the delete message affordance."
+              "value": "This is the change user affordance."
+            }
+          },
+          {
+            "id": "replace",
+            "name": "replace-user",
+            "type": "idempotent",
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#User"
+            },
+            "rt": "https://baysong.com/hapi/blog#void",
+            "doc": {
+              "value": "This is the replace user affordance."
             }
           },
           {
             "id": "remove",
             "name": "remove-user",
             "type": "idempotent",
-            "rt":"https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi/blog#void",
             "doc": {
-              "value": "This is the delete message affordance."
+              "value": "This is the remove user affordance.  Care should be taken because this could leave some resources in an inconsistent state."
             }
           },
           {
             "id": "approve",
             "name": "approve-user",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#approveUser"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#approveUser"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to approve a user. A moderator or administrator may have the ability to approve the creation of a new users account."
             }
           },
           {
             "id": "ban",
             "name": "ban-user",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#banUser"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#banUser"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to ban a user. A moderator or administrator may have the ability to ban a new users account."
             }
           },
           {
             "id": "soft-ban",
             "name": "soft-ban-user",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#softBanUser"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#softBanUser"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to softBan a user. A moderator or administrator may have the ability to softBan a users account."
             }
           },
           {
             "id": "silence",
             "name": "silence-user",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#silenceUser"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#silenceUser"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to silence a user. A moderator or administrator may have the ability to silence a users account and prevent them from posting comments for a period of time."
             }
           },
           {
             "id": "unban",
             "name": "unban-user",
             "type": "unsafe",
-            "link":{
-              "rel":"https://baysong.com/hapi/blog#unbanUser"
+            "link": {
+              "rel": "https://baysong.com/hapi/blog#unbanUser"
             },
             "doc": {
-              "value": "This affordance is used to publish a blog post."
+              "value": "This affordance is used to unban a user. A moderator or administrator may have the ability to unban a banned users account."
             }
           }
         ]
       },
       {
-        "id": "PublishPost",
+        "id": "publishPost",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "publishPostComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the internal comment field to describe the reason, or context of this posts publishing."
             }
           },
           {
-            "id": "prop2",
+            "id": "publishPostMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This message is the publicly viewable message to describe the reason or context of this posts publishing."
+            }
+          },
+          {
+            "id": "publishPostShareMessage",
+            "type": "semantic",
+            "doc": {
+              "value": "This message is the long form message to be used with sharing links to this post on services such as LinkedIn or Medium."
+            }
+          },
+          {
+            "id": "publishPostShortShareMessage",
+            "type": "semantic",
+            "doc": {
+              "value": "This message is the short form message to be used with sharing links to this post on services such as Twitter."
+            }
+          },
+          {
+            "id": "publishPostEmbeddedImage",
+            "type": "semantic",
+            "doc": {
+              "value": "This property will list the embedded image to be included and used for sharing this post on social services."
+            }
+          },
+          {
+            "id": "publishPostSchedule",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the instant or datetime with timezone reference for when the post should be made publicly viewable."
             }
           }
         ],
@@ -602,23 +704,33 @@
       {
         "id": "unpublishPost",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "unpublishPostComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the internal comment field to describe the reason, or context for this post to be unpublished."
             }
           },
           {
-            "id": "prop2",
+            "id": "unpublishPostMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This message is the publicly viewable message to describe the reason or context for this post to be unpublished."
+            }
+          },
+          {
+            "id": "unpublishPostShareMessageAction",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the intended action to be done with any social share posts related to this post which may have been released."
+            }
+          },
+          {
+            "id": "unpublishPostSchedule",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the instant or datetime with timezone reference for when the post should unpublished."
             }
           }
         ],
@@ -627,23 +739,26 @@
       {
         "id": "disableComments",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "disableCommentsMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This message is intended to be viewable to the users or consumers of the system to explain the reasons for and duration of disabling comments."
             }
           },
           {
-            "id": "prop2",
+            "id": "disableCommentsComment",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the internal comment field to be used viewed and used by privelged users to understand additional context and reasoning behind disabling comments."
+            }
+          },
+          {
+            "id": "disableCommentsDuration",
+            "type": "semantic",
+            "doc": {
+              "value": "This field will give the duration of the disabling period in either a duration or a future instant, at which point comments may optionally be re-enabled, or the system may alert privileged users to the expiration of the lock."
             }
           }
         ],
@@ -652,23 +767,19 @@
       {
         "id": "enableComments",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "enableCommentsMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This message is intended to be viewable to the users or consumers of the system to explain the reasons for enabling comments."
             }
           },
           {
-            "id": "prop2",
+            "id": "enableCommentsComment",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the internal comment field to be used viewed and used by privelged users to understand additional context and reasoning behind enabling comments."
             }
           }
         ],
@@ -677,23 +788,12 @@
       {
         "id": "pingback",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "pingbackStatus",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
-            }
-          },
-          {
-            "id": "prop2",
-            "type": "semantic",
-            "doc": {
-              "value": "This is prop 2"
+              "value": "This property is intended to describe the intended status of any pingback or related technology being used with this post."
             }
           }
         ],
@@ -702,23 +802,19 @@
       {
         "id": "shortlink",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "shortlinkProvider",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This value is the root of the shortlink provider service, or the name of the provider service to be used."
             }
           },
           {
-            "id": "prop2",
+            "id": "shortlinkTrackingId",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the tracking id to be used and embedded into the shortlink url to allow tracking of the use of the shortlink."
             }
           }
         ],
@@ -727,23 +823,19 @@
       {
         "id": "approveComment",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "approveCommentMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the publicly viewable message to be displayed to the user or consumer if there is a reason to provide additional context and information around its approval."
             }
           },
           {
-            "id": "prop2",
+            "id": "approveCommentComment",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the internal message to be viewable only by privlidged users to give additional information, context, or explain reasoning for approving this comment if needed."
             }
           }
         ],
@@ -752,23 +844,26 @@
       {
         "id": "markSpam",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "markSpamMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the message to be sent to the provider to supply any additional context around marking this content as spam."
             }
           },
           {
-            "id": "prop2",
+            "id": "markSpamComment",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the message to be sent to the provider by privileged users to supply any additional context around marking this content as spam."
+            }
+          },
+          {
+            "id": "markSpamAction",
+            "type": "semantic",
+            "doc": {
+              "value": "This property is the reccomended action by priviledged users to be taken to resolve the issue with this content. "
             }
           }
         ],
@@ -777,23 +872,40 @@
       {
         "id": "moderate",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "propertyChanged",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This field is a pointer or name which described the field to be changed in the content."
             }
           },
           {
-            "id": "prop2",
+            "id": "propertyValue",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This field holds the current value or an ETag value for the field."
+            }
+          },
+          {
+            "id": "propertyNewValue",
+            "type": "semantic",
+            "doc": {
+              "value": "This field holds the new value which should replace the propertyChanged value."
+            }
+          },
+          {
+            "id": "moderateComments",
+            "type": "semantic",
+            "doc": {
+              "value": "This message is the internal comments to provide additional context around the moderation of this content."
+            }
+          },
+          {
+            "id": "moderateMessage",
+            "type": "semantic",
+            "doc": {
+              "value": "This message is the publicly viewable message to be displayed to users or consumers to understand the reasoning for the moderation changes."
             }
           }
         ],
@@ -802,23 +914,26 @@
       {
         "id": "blockComment",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "blockCommentComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the message to be viewed by priviledged users to provide addition context, information, or reasoning to blocking a comment."
             }
           },
           {
-            "id": "prop2",
+            "id": "blockCommentMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This message is intended to be displayed to the users or consumers to explain the reason for blocking a comment."
+            }
+          },
+          {
+            "id": "blockPenalty",
+            "type": "semantic",
+            "doc": {
+              "value": "This field is intended to suggest potential penalties or remediation steps to other priviledged users to prevent systemic and continuing negative outcomes."
             }
           }
         ],
@@ -827,23 +942,19 @@
       {
         "id": "approveUser",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "approvalComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the internal message to be viewed by priviledged users to provide additional context, information, or reasoning to the approval of the user."
             }
           },
           {
-            "id": "prop2",
+            "id": "approvalMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the message intended to be displayed by users or consumers to welcome them, and provide context and information about their approved status."
             }
           }
         ],
@@ -852,23 +963,26 @@
       {
         "id": "banUser",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "banComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the message to be viewed by privileged users to understand additional context, information, and reasoning behind banning the user."
             }
           },
           {
-            "id": "prop2",
+            "id": "banMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the message to be viewed by users and consumers of the service to understand among other things the reasons, implications, and behaviors which caused the user ban."
+            }
+          },
+          {
+            "id": "banDuration",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the intended duration of the ban, future instant, or other conditions where the ban may be reviewed, or automatically removed."
             }
           }
         ],
@@ -877,23 +991,33 @@
       {
         "id": "softBanUser",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "softBanComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the message to be viewed by privileged users to understand additional context, information, and reasoning behind soft banning the user."
             }
           },
           {
-            "id": "prop2",
+            "id": "softBanMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the message to be viewed by users and consumers of the service to understand among other things the reasons, implications, and behaviors which caused the user soft ban. This field may not be displayed if users are not intended to know when another user or themselves is soft banned."
+            }
+          },
+          {
+            "id": "softBanDuration",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the intended duration of the soft ban, future instant, or other conditions where the soft ban may be reviewed, or automatically removed."
+            }
+          },
+          {
+            "id": "softBanApparentToUser",
+            "type": "semantic",
+            "doc": {
+              "value": "This field is intended to provide a means to suggest if this user should be aware through some service behavior that they are currently soft banned.  An example may be a user comment being displayed to their own queries, while being temporarily or permanently invisible to other users.  An additional example could be the restriction of access or priority to user services."
             }
           }
         ],
@@ -902,23 +1026,33 @@
       {
         "id": "silenceUser",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "silenceComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the message to be viewed by privileged users to understand additional context, information, and reasoning behind silence the user."
             }
           },
           {
-            "id": "prop2",
+            "id": "silenceMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This is the message to be viewed by users and consumers of the service to understand among other things the reasons, implications, and behaviors which caused the user silence. This field may not be displayed if users are not intended to know when another user or themselves is silenced."
+            }
+          },
+          {
+            "id": "silenceDuration",
+            "type": "semantic",
+            "doc": {
+              "value": "This is the intended duration of the silence, future instant, or other conditions where the silence may be reviewed, or automatically removed."
+            }
+          },
+          {
+            "id": "silenceApparentToUser",
+            "type": "semantic",
+            "doc": {
+              "value": "This field is intended to provide a means to suggest if this user should be aware through some service behavior that they are currently silenced.  An example may be a user comment being displayed to their own queries, while being temporarily or permanently invisible to other users."
             }
           }
         ],
@@ -927,59 +1061,100 @@
       {
         "id": "unbanUser",
         "type": "semantic",
-        "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
-          "format": "text"
-        },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "unbanComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This is the message to be displayed to priviledged users to provide additional context around the context, reasoning, and other information on why the user is to be unbanned."
             }
           },
           {
-            "id": "prop2",
+            "id": "unbanMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This message is to be displayed to users and consumers of the service to explain the reasoning and context in which the user is unbanned."
+            }
+          },
+          {
+            "id": "unbanProvisional",
+            "type": "semantic",
+            "doc": {
+              "value": "This message is to be displayed to users and consumers to convey any provisional statements or activities which may be additionally imposed on the user in order to be unbanned."
             }
           }
         ],
         "rt": "https://baysong.com/hapi/blog#void"
       },
       {
-        "id": "add-delay",
-        "name": "add-delay-blog",
-        "type": "unsafe",
-        "link":{
-          "rel":"https://baysong.com/hapi/blog#addDelay"
-        },
-        "doc": {
-          "value": "This affordance is used to publish a blog post."
-        }
-      },
-      {
         "id": "addDelay",
         "type": "semantic",
+        "descriptor": [
+          {
+            "id": "delayCause",
+            "type": "semantic",
+            "doc": {
+              "value": "This value will hold the displayed cause for adding the publishing or visibility delay with this resource."
+            }
+          },
+          {
+            "id": "delayDuration",
+            "type": "semantic",
+            "doc": {
+              "value": "The duration of time or publishing date for showing additional resoruces added to the system."
+            }
+          },
+          {
+            "id": "delayUnit",
+            "type": "semantic",
+            "doc": {
+              "value": "The unit of time, or format of the delayDuration field used to interpret how long the sender wishes the publication visibility be delayed."
+            }
+          },
+          {
+            "id": "delayMessage",
+            "type": "semantic",
+            "doc": {
+              "value": "The visible message to be displayed if a user with appropriate privledges interacts with this resource while it is not yet publically available."
+            }
+          },
+          {
+            "id": "delayComment",
+            "type": "semantic",
+            "doc": {
+              "value": "This internal comment is visible to privledged users in order to provide additonal context on the reason for the requested delay."
+            }
+          }
+        ],
+        "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "flagContent",
+        "type": "semantic",
         "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "value": "The flag comment message is used to flag generic content within the service for any manner of reasons including illegal content, offensive material, violating the ToS, or harassment.",
           "format": "text"
         },
         "descriptor": [
           {
-            "id": "prop1",
+            "id": "flagMessage",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 1"
+              "value": "This message is intended to be displayed to users and consumers to provide information, reasoning, and other context to explain why the content has been flagged."
             }
           },
           {
-            "id": "prop2",
+            "id": "flagComments",
             "type": "semantic",
             "doc": {
-              "value": "This is prop 2"
+              "value": "This message is intended for priviledged users to provice further context, information, factors, and information which contributed to the decision to flag this content."
+            }
+          },
+          {
+            "id": "flagAction",
+            "type": "semantic",
+            "doc": {
+              "value": "This field is to provide priviledged users with a means to suggest mitigating actions or follow up procedures to prevent further content from being contributed in the future which will be flagged."
             }
           }
         ],
@@ -989,10 +1164,31 @@
         "id": "void",
         "type": "semantic",
         "doc": {
-          "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
+          "value": "This type is present to convey that no response is expected.",
           "format": "text"
         },
         "rt": "https://baysong.com/hapi/blog#void"
+      },
+      {
+        "id": "add-delay",
+        "name": "add-delay-blog",
+        "type": "unsafe",
+        "link": {
+          "rel": "https://baysong.com/hapi/blog#addDelay"
+        },
+        "doc": {
+          "value": "This affordance is used to add a delay to the posting of content."
+        }
+      },
+      {
+        "id": "flag-content",
+        "type": "unsafe",
+        "link": {
+          "rel": "https://baysong.com/hapi/blog#flagContent"
+        },
+        "doc": {
+          "value": "This affordance is used to flag content for potential violations of participation rules, hurtful behavior, illegal activity and more."
+        }
       }
     ]
   }
