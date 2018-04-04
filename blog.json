@@ -9,12 +9,25 @@
           "value": "A blog post is a resource which holds the textual contents and metadata references to the author, the post details, and links to Comments resources associated with the posting.",
           "format": "text"
         },
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"resource"
+          }
+        ],
         "descriptor": [
           {
             "id": "id",
             "type": "semantic",
             "doc": {
               "value": "The id field represents the globally unique identifier for this post resource."
+            }
+          },
+          {
+            "id": "postTitle",
+            "type": "semantic",
+            "doc": {
+              "value": "This value holds the title for the post."
             }
           },
           {
@@ -235,6 +248,12 @@
           "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
           "format": "text"
         },
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"resource"
+          }
+        ],
         "descriptor": [
           {
             "id": "id",
@@ -431,6 +450,12 @@
         "doc": {
           "value": "A blog user is a resource which represents a user on the blog, this may be either an author or a viewer or reader."
         },
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"resource"
+          }
+        ],
         "descriptor": [
           {
             "id": "id",
@@ -493,6 +518,13 @@
             "type": "semantic",
             "doc": {
               "value": "This field holds a value for the last time this user was seen on this service.  This may be related to the last login datetime, the last interaction the user had with the service, or some other measure."
+            }
+          },
+          {
+            "id": "joinedDate",
+            "type": "semantic",
+            "doc": {
+              "value": "This field holds a value for the time this user joined the service."
             }
           },
           {
@@ -655,6 +687,12 @@
       {
         "id": "publishPost",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "publishPostComments",
@@ -698,12 +736,17 @@
               "value": "This is the instant or datetime with timezone reference for when the post should be made publicly viewable."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "unpublishPost",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "unpublishPostComments",
@@ -733,12 +776,17 @@
               "value": "This is the instant or datetime with timezone reference for when the post should unpublished."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "disableComments",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "disableCommentsMessage",
@@ -761,12 +809,17 @@
               "value": "This field will give the duration of the disabling period in either a duration or a future instant, at which point comments may optionally be re-enabled, or the system may alert privileged users to the expiration of the lock."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "enableComments",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "enableCommentsMessage",
@@ -782,12 +835,17 @@
               "value": "This is the internal comment field to be used viewed and used by privelged users to understand additional context and reasoning behind enabling comments."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "pingback",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "pingbackStatus",
@@ -796,12 +854,17 @@
               "value": "This property is intended to describe the intended status of any pingback or related technology being used with this post."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "shortlink",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "shortlinkProvider",
@@ -817,12 +880,17 @@
               "value": "This is the tracking id to be used and embedded into the shortlink url to allow tracking of the use of the shortlink."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "approveComment",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "approveCommentMessage",
@@ -838,12 +906,17 @@
               "value": "This is the internal message to be viewable only by privlidged users to give additional information, context, or explain reasoning for approving this comment if needed."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "markSpam",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "markSpamMessage",
@@ -866,12 +939,17 @@
               "value": "This property is the reccomended action by priviledged users to be taken to resolve the issue with this content. "
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "moderate",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "propertyChanged",
@@ -908,12 +986,17 @@
               "value": "This message is the publicly viewable message to be displayed to users or consumers to understand the reasoning for the moderation changes."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "blockComment",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "blockCommentComments",
@@ -936,12 +1019,17 @@
               "value": "This field is intended to suggest potential penalties or remediation steps to other priviledged users to prevent systemic and continuing negative outcomes."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "approveUser",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "approvalComments",
@@ -957,12 +1045,17 @@
               "value": "This is the message intended to be displayed by users or consumers to welcome them, and provide context and information about their approved status."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "banUser",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "banComments",
@@ -985,12 +1078,17 @@
               "value": "This is the intended duration of the ban, future instant, or other conditions where the ban may be reviewed, or automatically removed."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "softBanUser",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "softBanComments",
@@ -1020,12 +1118,17 @@
               "value": "This field is intended to provide a means to suggest if this user should be aware through some service behavior that they are currently soft banned.  An example may be a user comment being displayed to their own queries, while being temporarily or permanently invisible to other users.  An additional example could be the restriction of access or priority to user services."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "silenceUser",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "silenceComments",
@@ -1055,12 +1158,17 @@
               "value": "This field is intended to provide a means to suggest if this user should be aware through some service behavior that they are currently silenced.  An example may be a user comment being displayed to their own queries, while being temporarily or permanently invisible to other users."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "unbanUser",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "unbanComments",
@@ -1083,12 +1191,17 @@
               "value": "This message is to be displayed to users and consumers to convey any provisional statements or activities which may be additionally imposed on the user in order to be unbanned."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "addDelay",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "descriptor": [
           {
             "id": "delayCause",
@@ -1125,8 +1238,7 @@
               "value": "This internal comment is visible to privledged users in order to provide additonal context on the reason for the requested delay."
             }
           }
-        ],
-        "rt": "https://baysong.com/hapi/blog#void"
+        ]
       },
       {
         "id": "flagContent",
@@ -1163,11 +1275,16 @@
       {
         "id": "void",
         "type": "semantic",
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"message"
+          }
+        ],
         "doc": {
           "value": "This type is present to convey that no response is expected.",
           "format": "text"
-        },
-        "rt": "https://baysong.com/hapi/blog#void"
+        }
       },
       {
         "id": "add-delay",
@@ -1176,6 +1293,12 @@
         "link": {
           "rel": "https://baysong.com/hapi/blog#addDelay"
         },
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"affordance"
+          }
+        ],
         "doc": {
           "value": "This affordance is used to add a delay to the posting of content."
         }
@@ -1187,6 +1310,12 @@
         "link": {
           "rel": "https://baysong.com/hapi/blog#flagContent"
         },
+        "ext":[
+          {
+            "href":"https://baysong.com/hapi-core#vocabulary",
+            "value":"affordance"
+          }
+        ],
         "doc": {
           "value": "This affordance is used to flag content for potential violations of participation rules, hurtful behavior, illegal activity and more."
         }
