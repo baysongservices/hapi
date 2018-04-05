@@ -1321,12 +1321,10 @@
         }
       }
     ],
-    "ext": [
-      {
-        "id": "rootMediaType",
-        "value": "application/vnd.baysong.blog",
-        "href": "https://baysong.com/hapi-core#rootMediaType"
-      }
-    ]
+    "ext": {
+      "id": "rootMediaType",
+      "value": "application/vnd.baysong.blog",
+      "href": "https://baysong.com/hapi-core#rootMediaType"
+    }
   }
 }
