@@ -9,10 +9,10 @@
           "value": "A blog post is a resource which holds the textual contents and metadata references to the author, the post details, and links to Comments resources associated with the posting.",
           "format": "text"
         },
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"resource"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "resource"
           }
         ],
         "descriptor": [
@@ -248,10 +248,10 @@
           "value": "A blog comment is a resource which holds user responses to a blog post, or another users comment.",
           "format": "text"
         },
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"resource"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "resource"
           }
         ],
         "descriptor": [
@@ -450,10 +450,10 @@
         "doc": {
           "value": "A blog user is a resource which represents a user on the blog, this may be either an author or a viewer or reader."
         },
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"resource"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "resource"
           }
         ],
         "descriptor": [
@@ -687,10 +687,10 @@
       {
         "id": "publishPost",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -741,10 +741,10 @@
       {
         "id": "unpublishPost",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -781,10 +781,10 @@
       {
         "id": "disableComments",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -814,10 +814,10 @@
       {
         "id": "enableComments",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -840,10 +840,10 @@
       {
         "id": "pingback",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -859,10 +859,10 @@
       {
         "id": "shortlink",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -885,10 +885,10 @@
       {
         "id": "approveComment",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -911,10 +911,10 @@
       {
         "id": "markSpam",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -944,10 +944,10 @@
       {
         "id": "moderate",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -991,10 +991,10 @@
       {
         "id": "blockComment",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -1024,10 +1024,10 @@
       {
         "id": "approveUser",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -1050,10 +1050,10 @@
       {
         "id": "banUser",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -1083,10 +1083,10 @@
       {
         "id": "softBanUser",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -1123,10 +1123,10 @@
       {
         "id": "silenceUser",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -1163,10 +1163,10 @@
       {
         "id": "unbanUser",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -1196,10 +1196,10 @@
       {
         "id": "addDelay",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "descriptor": [
@@ -1275,10 +1275,10 @@
       {
         "id": "void",
         "type": "semantic",
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"message"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
           }
         ],
         "doc": {
@@ -1293,10 +1293,10 @@
         "link": {
           "rel": "https://baysong.com/hapi/blog#addDelay"
         },
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"affordance"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "affordance"
           }
         ],
         "doc": {
@@ -1310,10 +1310,10 @@
         "link": {
           "rel": "https://baysong.com/hapi/blog#flagContent"
         },
-        "ext":[
+        "ext": [
           {
-            "href":"https://baysong.com/hapi-core#vocabulary",
-            "value":"affordance"
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "affordance"
           }
         ],
         "doc": {
@@ -1321,10 +1321,12 @@
         }
       }
     ],
-    "ext":{
-      "id":"rootMediaType",
-      "value":"application/vnd.baysong.blog",
-      "href":"https://baysong.com/hapi-core#rootMediaType"
-    }
+    "ext": [
+      {
+        "id": "rootMediaType",
+        "value": "application/vnd.baysong.blog",
+        "href": "https://baysong.com/hapi-core#rootMediaType"
+      }
+    ]
   }
 }
