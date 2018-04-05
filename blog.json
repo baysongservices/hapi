@@ -1323,7 +1323,8 @@
     ],
     "ext":{
       "id":"rootMediaType",
-      "value":"application/vnd.baysong.blog"
+      "value":"application/vnd.baysong.blog",
+      "href":"https://baysong.com/hapi-core#rootMediaType"
     }
   }
 }
