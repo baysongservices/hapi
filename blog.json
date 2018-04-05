@@ -1322,7 +1322,8 @@
       }
     ],
     "ext":{
-      "mimeroot":"application/vnd.baysong.blog"
+      "id":"rootMediaType",
+      "value":"application/vnd.baysong.blog"
     }
   }
 }
