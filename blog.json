@@ -1321,7 +1321,7 @@
         }
       }
     ],
-    "meta":{
+    "ext":{
       "mimeroot":"application/vnd.baysong.blog"
     }
   }
