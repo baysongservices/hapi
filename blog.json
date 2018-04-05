@@ -1320,6 +1320,9 @@
           "value": "This affordance is used to flag content for potential violations of participation rules, hurtful behavior, illegal activity and more."
         }
       }
-    ]
+    ],
+    "meta":{
+      "mimeroot":"application/vnd.baysong.blog"
+    }
   }
 }
