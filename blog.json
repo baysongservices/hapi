@@ -119,7 +119,7 @@
             "link": {
               "rel": "https://baysong.com/hapi/blog#Post"
             },
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the create post affordance. Use this to create a new blog post."
             }
@@ -179,7 +179,7 @@
             "link": {
               "rel": "https://baysong.com/hapi/blog#Comment"
             },
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This affordance will add a comment to a blog post. This convenience affordance should allow easier designs in consumer code, without requiring additional binding for limited gain."
             }
@@ -351,7 +351,7 @@
             "link": {
               "rel": "https://baysong.com/hapi/blog#Comment"
             },
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This affordance will add a comment resource."
             }
@@ -372,7 +372,7 @@
             "link": {
               "rel": "https://baysong.com/hapi/blog#Comment"
             },
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the change comment affordance. This will update the current resource, with the changed fields."
             }
@@ -384,7 +384,7 @@
             "link": {
               "rel": "https://baysong.com/hapi/blog#Comment"
             },
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the replace comment affordance.  Care should be taken as this will replace the comment completely, which could leave other resources in an inconsistent state."
             }
@@ -393,7 +393,7 @@
             "id": "remove",
             "name": "remove-comment",
             "type": "idempotent",
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the remove comment affordance, use this to remove a comment completely."
             }
@@ -580,7 +580,7 @@
             "id": "add",
             "name": "add-user",
             "type": "unsafe",
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the create message affordance."
             }
@@ -601,7 +601,7 @@
             "link": {
               "rel": "https://baysong.com/hapi/blog#User"
             },
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the change user affordance."
             }
@@ -613,7 +613,7 @@
             "link": {
               "rel": "https://baysong.com/hapi/blog#User"
             },
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the replace user affordance."
             }
@@ -622,7 +622,7 @@
             "id": "remove",
             "name": "remove-user",
             "type": "idempotent",
-            "rt": "https://baysong.com/hapi/blog#void",
+            "rt": "https://baysong.com/hapi-core#void",
             "doc": {
               "value": "This is the remove user affordance.  Care should be taken because this could leave some resources in an inconsistent state."
             }
@@ -1270,21 +1270,7 @@
             }
           }
         ],
-        "rt": "https://baysong.com/hapi/blog#void"
-      },
-      {
-        "id": "void",
-        "type": "semantic",
-        "ext": [
-          {
-            "href": "https://baysong.com/hapi-core#vocabulary",
-            "value": "message"
-          }
-        ],
-        "doc": {
-          "value": "This type is present to convey that no response is expected.",
-          "format": "text"
-        }
+        "rt": "https://baysong.com/hapi-core#void"
       },
       {
         "id": "add-delay",
@@ -1322,9 +1308,9 @@
       }
     ],
     "ext": {
-      "id": "rootMediaType",
+      "id": "root-media-type",
       "value": "application/vnd.baysong.blog",
-      "href": "https://baysong.com/hapi-core#rootMediaType"
+      "href": "https://baysong.com/hapi-core#root-media-type"
     }
   }
 }

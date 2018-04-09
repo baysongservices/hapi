@@ -1,0 +1,1 @@
+This is the core vocabulary for hypermedia APIs, the use of these tags within the meta field will enable capable generic user agents to respond appropriately to the presented hypermedia

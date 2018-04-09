@@ -1,0 +1,45 @@
+{
+  "alps": {
+    "version": "1.0",
+    "descriptor": [
+      {
+        "id": "vocabulary",
+        "type": "semantic",
+        "ext" : {
+          "href" : "https://baysong.com/hapi-core#vocabulary",
+          "value":["resource","relationship","message","affordance","no-cache","cacheable","acl-dependent-representation"]
+        },
+        "doc": {
+          "href": "https://baysong.com/hapi-core/vocabulary.md",
+          "format":"markdown"
+        }
+      },
+      {
+        "id": "root-media-type",
+        "type": "semantic",
+        "doc":{
+          "value":"https://baysong.com/hapi-core/root-media-type.md",
+          "type":"markdown"
+        }
+      },
+      {
+        "id": "void",
+        "type": "semantic",
+        "ext": [
+          {
+            "href": "https://baysong.com/hapi-core#vocabulary",
+            "value": "message"
+          }
+        ],
+        "doc": {
+          "value": "This type is present to convey that no response is expected.",
+          "format": "text"
+        }
+      }
+    ],
+    "doc":{
+      "href":"https://baysong.com/hapi-core/hapi-core.md",
+      "format":"markdown"
+    }
+  }
+}
